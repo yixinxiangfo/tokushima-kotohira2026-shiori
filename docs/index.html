@@ -1,0 +1,564 @@
+<title>年末2026 旅のしおり｜金刀比羅宮・徳島お遍路</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#eef2ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14201c" media="(prefers-color-scheme: dark)">
+<style>
+  :root{
+    --paper:#eef2ee;
+    --paper-raised:#f7faf6;
+    --ink:#1c2b26;
+    --ink-soft:#4c5d56;
+    --ink-faint:#7c8a83;
+    --line:rgba(28,43,38,0.14);
+    --rail-accent:#d9711f;
+    --font-display:"Hiragino Mincho ProN","YuMincho","Yu Mincho","Noto Serif JP",serif;
+    --font-body:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch' result='t'/%3E%3CfeColorMatrix in='t' type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.14' intercept='0.86'/%3E%3CfeFuncG type='linear' slope='0.14' intercept='0.86'/%3E%3CfeFuncB type='linear' slope='0.14' intercept='0.86'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#14201c; --paper-raised:#1b2b25; --ink:#e7ece8;
+      --ink-soft:#aab8b1; --ink-faint:#7c8a83; --line:rgba(231,236,232,0.16);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#14201c; --paper-raised:#1b2b25; --ink:#e7ece8;
+    --ink-soft:#aab8b1; --ink-faint:#7c8a83; --line:rgba(231,236,232,0.16);
+  }
+  :root[data-theme="light"]{
+    --paper:#eef2ee; --paper-raised:#f7faf6; --ink:#1c2b26;
+    --ink-soft:#4c5d56; --ink-faint:#7c8a83; --line:rgba(28,43,38,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{ height:100%; }
+  body{
+    margin:0; display:flex; flex-direction:column; height:100dvh; overflow:hidden;
+    background:var(--paper); color:var(--ink); font-family:var(--font-body);
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+    padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right);
+  }
+  a{color:inherit;}
+  h1,h2{text-wrap:balance; font-family:var(--font-display); font-weight:600;}
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:.001s !important; animation-iteration-count:1 !important; } }
+
+  /* ---------- header / rail ---------- */
+  .railhead{
+    flex:0 0 auto; position:relative;
+    background-color:var(--paper-raised);
+    background-image:linear-gradient(var(--paper-raised),var(--paper-raised)), var(--grain);
+    background-blend-mode:soft-light;
+    padding:calc(8px + env(safe-area-inset-top)) 18px 14px;
+  }
+  .railhead::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+    background-image:radial-gradient(circle, var(--line) 1.1px, transparent 1.4px);
+    background-size:9px 100%; background-repeat:repeat-x;
+  }
+  h1{
+    margin:0 0 14px; font-size:16.5px; letter-spacing:.03em; display:flex;
+    align-items:baseline; gap:8px; flex-wrap:wrap;
+  }
+  h1 .eyebrow{ font-family:var(--font-body); font-size:9.5px; font-weight:500; letter-spacing:.18em; color:var(--ink-faint); }
+  h1 .sub{ font-family:var(--font-body); font-size:11.5px; font-weight:400; color:var(--ink-soft); letter-spacing:.04em; }
+
+  .rail{ position:relative; height:56px; }
+  .rail-track{ position:absolute; left:23px; right:23px; top:24px; height:2px; background:var(--line); border-radius:2px; }
+  .rail-track::before{
+    content:""; position:absolute; left:0; top:0; height:100%;
+    width:calc(var(--progress, 0) * 100%);
+    background:var(--rail-accent); border-radius:2px;
+  }
+  .trolley{
+    position:absolute; top:-6px; left:0; width:46px; height:40px;
+    transition:left .6s cubic-bezier(.34,1.4,.64,1);
+    color:var(--rail-accent);
+  }
+  .trolley-hop{ width:100%; height:100%; }
+  .trolley-hop.hop{ animation:hop .55s cubic-bezier(.34,1.56,.64,1) 2; transform-origin:50% 100%; }
+  @keyframes hop{
+    0%{ transform:translateY(0) scale(1,1); }
+    14%{ transform:translateY(3px) scale(1.16,0.82); }
+    50%{ transform:translateY(-20px) scale(0.88,1.16); }
+    86%{ transform:translateY(3px) scale(1.16,0.82); }
+    100%{ transform:translateY(0) scale(1,1); }
+  }
+  .trolley-body{ width:100%; height:100%; animation:chug .9s ease-in-out infinite; transform-origin:50% 100%; }
+  @keyframes chug{ 0%,100%{ translate:0 0; rotate:0deg; } 25%{ translate:0 -1.4px; rotate:-1.6deg; } 75%{ translate:0 -1.4px; rotate:1.6deg; } }
+  .trolley svg{ width:100%; height:100%; display:block; overflow:visible; }
+  .wheel{ transform-box:fill-box; transform-origin:50% 50%; animation:spin .9s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .puff{ opacity:0; animation:puff 1.6s ease-out infinite; }
+  .puff.p2{ animation-delay:.45s; } .puff.p3{ animation-delay:.9s; }
+  @keyframes puff{ 0%{ opacity:0; transform:translate(0,0) scale(.5); } 18%{ opacity:.75; } 100%{ opacity:0; transform:translate(5px,-11px) scale(1.4); } }
+
+  .stations{ position:relative; display:flex; justify-content:space-between; padding-top:32px; margin:0; list-style:none; }
+  .station{
+    appearance:none; border:none; background:none; cursor:pointer; font-family:var(--font-body);
+    color:var(--ink-faint); display:flex; flex-direction:column; align-items:center; gap:1px;
+    padding:3px 9px; border-radius:10px; font-size:10.5px; letter-spacing:.02em;
+    -webkit-tap-highlight-color:transparent; transition:background .3s ease, color .3s ease;
+  }
+  .station b{ font-size:13px; font-variant-numeric:tabular-nums; color:var(--ink-soft); font-weight:700; transition:color .3s ease; }
+  .station.active{ color:var(--rail-accent); background:color-mix(in srgb, var(--rail-accent) 15%, transparent); }
+  .station.active b{ color:var(--rail-accent); }
+
+  /* ---------- pages (horizontal) ---------- */
+  .pages{
+    flex:1 1 auto; min-height:0; display:flex; overflow-x:auto; overflow-y:hidden;
+    scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none;
+  }
+  .pages::-webkit-scrollbar{ display:none; }
+
+  .day{
+    flex:0 0 100%; scroll-snap-align:start; scroll-snap-stop:always;
+    height:100%; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    padding:22px 20px calc(28px + env(safe-area-inset-bottom));
+    background-color:var(--paper);
+    background-image:linear-gradient(180deg, color-mix(in srgb, var(--accent) 11%, var(--paper)) 0%, var(--paper) 340px), var(--grain);
+    background-blend-mode:normal, soft-light;
+  }
+  .day[data-i="0"]{ --accent:#d9711f; }
+  .day[data-i="1"]{ --accent:#12876a; }
+  .day[data-i="2"]{ --accent:#3557b0; }
+  @media (prefers-color-scheme: dark){
+    .day[data-i="0"]{ --accent:#f0954a; } .day[data-i="1"]{ --accent:#4fcda8; } .day[data-i="2"]{ --accent:#7fa0e6; }
+  }
+  :root[data-theme="dark"] .day[data-i="0"]{ --accent:#f0954a; }
+  :root[data-theme="dark"] .day[data-i="1"]{ --accent:#4fcda8; }
+  :root[data-theme="dark"] .day[data-i="2"]{ --accent:#7fa0e6; }
+
+  .day-head{ margin-bottom:22px; }
+  .day-date{ font-family:var(--font-display); font-size:46px; line-height:1; color:var(--accent); white-space:nowrap; }
+  .day-date .slash{ font-size:27px; margin:0 1px; color:var(--ink-faint); font-family:var(--font-body); font-weight:300; }
+  .day-date .dow{ display:inline-block; margin-left:10px; font-family:var(--font-body); font-size:11px; color:var(--ink-faint); letter-spacing:.15em; vertical-align:5px; }
+  .day-meta h2{ margin:8px 0 4px; font-size:18px; }
+  .day-meta p{ margin:0; color:var(--ink-soft); font-size:13px; max-width:34ch; }
+
+  .timeline{ list-style:none; margin:0; padding:0; position:relative; }
+  .timeline::before{ content:""; position:absolute; left:66px; top:6px; bottom:6px; width:1px; background:var(--line); }
+  .stop{ position:relative; display:flex; gap:14px; padding:0 0 26px; }
+  .stop:last-child{ padding-bottom:0; }
+  .stop-time{ flex:0 0 52px; padding-top:2px; text-align:right; font-variant-numeric:tabular-nums; font-size:13px; font-weight:600; color:var(--ink-soft); }
+  .stop-dot{ position:absolute; left:60px; top:5px; width:13px; height:13px; border-radius:50%; background:var(--paper); border:2px solid var(--ink-faint); }
+  .stop.key .stop-dot{ border-color:var(--accent); background:var(--accent); width:14px; height:14px; left:59.5px; box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 20%, transparent); }
+  .stop-body{ flex:1; padding-left:34px; padding-top:1px; min-width:0; }
+  .stop-title{ margin:0; font-size:15px; font-weight:600; }
+  .stop-note{ margin:4px 0 0; font-size:13.5px; color:var(--ink-soft); }
+  .stop-caveat{ margin:4px 0 0; font-size:12px; color:var(--ink-faint); font-style:italic; }
+  .tag{ display:inline-block; margin-left:6px; padding:1px 8px; border:1px solid var(--line); border-radius:99px; font-size:10.5px; color:var(--ink-soft); font-weight:500; vertical-align:1px; white-space:nowrap; }
+
+  a.place{ color:var(--accent); text-decoration:underline; text-decoration-style:dotted; text-underline-offset:3px; font-weight:700; }
+  a.place::after{ content:"↗"; font-size:.68em; margin-left:.12em; vertical-align:super; }
+  a.place:focus-visible, .station:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+
+  .closing{ margin-top:32px; padding-top:22px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:12.5px; }
+  .closing p{ margin:3px 0; }
+
+  .info{ margin-top:9px; }
+  .info > summary{
+    cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:700; color:var(--accent); list-style:none;
+    -webkit-tap-highlight-color:transparent; padding:2px 0; user-select:none;
+  }
+  .info > summary::-webkit-details-marker{ display:none; }
+  .info > summary::before{
+    content:""; width:0; height:0; flex:none;
+    border-style:solid; border-width:4px 0 4px 6px; border-color:transparent transparent transparent var(--accent);
+    transition:transform .2s ease;
+  }
+  .info[open] > summary::before{ transform:rotate(90deg); }
+  .info-body{
+    margin:9px 0 0; padding:12px 14px; background:var(--paper-raised);
+    border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:3px 10px 10px 3px;
+    font-size:12.5px; color:var(--ink-soft);
+  }
+  .info-body p{ margin:0 0 7px; }
+  .info-body p:last-child{ margin-bottom:0; }
+  .info-dl{ margin:0; display:flex; flex-direction:column; gap:8px; }
+  .info-dl > div{ display:flex; gap:10px; }
+  .info-dl dt{ flex:0 0 40px; margin:0; font-weight:700; color:var(--ink-faint); font-size:11px; letter-spacing:.03em; padding-top:1px; }
+  .info-dl dd{ flex:1; margin:0; }
+  .checklist{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px; }
+  .checklist label{ display:flex; align-items:flex-start; gap:8px; cursor:pointer; }
+  .checklist input{ margin:2px 0 0; accent-color:var(--accent); width:14px; height:14px; flex:none; }
+  .checklist span{ transition:opacity .2s ease; }
+  .checklist input:checked + span{ opacity:.5; text-decoration:line-through; }
+
+  .swipe-hint{
+    position:fixed; right:calc(16px + env(safe-area-inset-right)); bottom:calc(18px + env(safe-area-inset-bottom));
+    background:var(--ink); color:var(--paper); font-size:11.5px; padding:8px 12px; border-radius:99px;
+    box-shadow:0 6px 18px rgba(0,0,0,.18); z-index:10; display:flex; align-items:center; gap:5px;
+    animation:nudge 1.4s ease-in-out infinite; transition:opacity .4s ease;
+  }
+  .swipe-hint.hidden{ opacity:0; pointer-events:none; }
+  @keyframes nudge{ 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(-5px); } }
+</style>
+
+<header class="railhead">
+  <h1><span class="eyebrow">旅のしおり</span>年末2026<span class="sub">金刀比羅宮・徳島お遍路</span></h1>
+  <div class="rail">
+    <div class="rail-track"></div>
+    <div class="trolley" id="trolley" aria-hidden="true">
+      <div class="trolley-hop" id="trolleyHop">
+        <div class="trolley-body">
+          <svg viewBox="0 0 40 34">
+            <g class="puff p1"><circle cx="35" cy="16" r="2" fill="currentColor"/></g>
+            <g class="puff p2"><circle cx="37.5" cy="13.5" r="1.6" fill="currentColor"/></g>
+            <g class="puff p3"><circle cx="39.5" cy="11" r="1.2" fill="currentColor"/></g>
+            <rect x="10" y="7" width="16" height="8" rx="3" fill="currentColor" opacity=".92"/>
+            <rect x="12.5" y="8.6" width="5.6" height="5" rx="1.2" fill="var(--paper-raised)"/>
+            <rect x="19.5" y="8.6" width="5.2" height="5" rx="1.2" fill="var(--paper-raised)"/>
+            <rect x="2" y="13" width="33" height="10" rx="4.5" fill="currentColor"/>
+            <g class="wheel"><circle cx="10.5" cy="24.5" r="4" fill="var(--paper-raised)" stroke="currentColor" stroke-width="2"/><line x1="10.5" y1="21" x2="10.5" y2="28" stroke="currentColor" stroke-width="1.1"/><line x1="7" y1="24.5" x2="14" y2="24.5" stroke="currentColor" stroke-width="1.1"/></g>
+            <g class="wheel"><circle cx="26.5" cy="24.5" r="4" fill="var(--paper-raised)" stroke="currentColor" stroke-width="2"/><line x1="26.5" y1="21" x2="26.5" y2="28" stroke="currentColor" stroke-width="1.1"/><line x1="23" y1="24.5" x2="30" y2="24.5" stroke="currentColor" stroke-width="1.1"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <ol class="stations">
+      <li><button class="station" data-target="day1" data-accent-l="#d9711f" data-accent-d="#f0954a">12/29<b>火</b></button></li>
+      <li><button class="station" data-target="day2" data-accent-l="#12876a" data-accent-d="#4fcda8">12/30<b>水</b></button></li>
+      <li><button class="station" data-target="day3" data-accent-l="#3557b0" data-accent-d="#7fa0e6">12/31<b>木</b></button></li>
+    </ol>
+  </div>
+</header>
+
+<div class="pages" id="pages">
+
+  <section class="day" id="day1" data-i="0">
+    <div class="day-head">
+      <span class="day-date">12<span class="slash">/</span>29<span class="dow">TUE</span></span>
+      <div class="day-meta">
+        <h2>出発・金刀比羅宮</h2>
+        <p>東広島から瀬戸大橋を渡って金刀比羅宮へ。785段を登ったら、宿のある阿波市土成町へ移動。</p>
+      </div>
+    </div>
+
+    <ol class="timeline">
+      <li class="stop key">
+        <div class="stop-time">7:00</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">東広島市高屋町 出発<span class="tag">克行</span><span class="tag">恵子</span><span class="tag">健司</span><span class="tag">絵美</span></p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">9:30</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">金刀比羅宮 着</p>
+          <p class="stop-caveat">※車で約2時間30分(山陽道→瀬戸中央道→高松道、推定。要ナビ確認)</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">9:30</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">金刀比羅宮 参拝</p>
+          <p class="stop-note">御本宮まで785段。両親も健脚とのことでしっかり登る</p>
+          <details class="info">
+            <summary>参拝案内</summary>
+            <div class="info-body">
+              <dl class="info-dl">
+                <div><dt>時間</dt><dd>参拝6:00〜18:00、御守授与所8:30〜17:00</dd></div>
+                <div><dt>段数</dt><dd>御本宮まで785段(片道約40分)。さらに奥社まで行くなら1,368段</dd></div>
+                <div><dt>所要</dt><dd>御本宮往復で目安2〜2.5時間</dd></div>
+              </dl>
+            </div>
+          </details>
+        </div>
+      </li>
+      <li class="stop">
+        <div class="stop-time">12:00</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">昼食</p>
+          <p class="stop-note">参道でさぬきうどんなど</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">13:00</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">宿(阿波市土成町)へ移動</p>
+          <p class="stop-caveat">※車で約40分</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">夕方</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title"><a class="place" href="https://www.airbnb.jp/rooms/1105236542911204390" target="_blank" rel="noopener">宿</a> 着<span class="tag">4人</span></p>
+          <p class="stop-note">徳島県阿波市土成町土成 宝筐殿172-30</p>
+          <details class="info">
+            <summary>宿泊メモ</summary>
+            <div class="info-body">
+              <p>チェックイン/アウトは厳密に決めず、当日の到着時間をホストへ直接連絡</p>
+              <p>7番札所十楽寺とほぼ同じ場所、徒歩すぐの立地</p>
+            </div>
+          </details>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="day" id="day2" data-i="1">
+    <div class="day-head">
+      <span class="day-date">12<span class="slash">/</span>30<span class="dow">WED</span></span>
+      <div class="day-meta">
+        <h2>お遍路と阿波の土柱</h2>
+        <p>宿のすぐ近くの札所を徒歩で。そのあと車で1番霊山寺と阿波の土柱へ。</p>
+      </div>
+    </div>
+
+    <ol class="timeline">
+      <li class="stop key">
+        <div class="stop-time">8:30</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">宿 出発</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">8:35</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">7番札所 十楽寺</p>
+          <p class="stop-note">宿のほぼ隣、徒歩すぐ</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">9:15</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">6番札所 安楽寺へ徒歩移動</p>
+          <p class="stop-caveat">※徒歩約15分(1.2km)</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">9:30</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">6番札所 安楽寺</p>
+        </div>
+      </li>
+      <li class="stop">
+        <div class="stop-time">10:15</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">宿へ戻り、車で1番霊山寺へ</p>
+          <p class="stop-caveat">※鳴門市、車で約30〜40分</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">11:00</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">1番札所 霊山寺</p>
+          <p class="stop-note">お遍路の出発点。仁王門・本堂・多宝塔など</p>
+          <details class="info">
+            <summary>拝観案内</summary>
+            <div class="info-body">
+              <dl class="info-dl">
+                <div><dt>時間</dt><dd>7:00〜17:00(納経8:00〜17:00)</dd></div>
+                <div><dt>所要</dt><dd>目安1時間</dd></div>
+                <div><dt>拝観料</dt><dd>境内自由</dd></div>
+              </dl>
+            </div>
+          </details>
+        </div>
+      </li>
+      <li class="stop">
+        <div class="stop-time">12:00</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">昼食</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">13:00</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">阿波の土柱へ移動</p>
+          <p class="stop-caveat">※車で約25分</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">13:30</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">阿波の土柱</p>
+          <p class="stop-note">世界三大奇勝のひとつ、国の天然記念物</p>
+          <details class="info">
+            <summary>見学案内</summary>
+            <div class="info-body">
+              <dl class="info-dl">
+                <div><dt>料金</dt><dd>見学自由・無料</dd></div>
+                <div><dt>所要</dt><dd>目安30〜60分</dd></div>
+              </dl>
+            </div>
+          </details>
+        </div>
+      </li>
+      <li class="stop">
+        <div class="stop-time">夕方</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">宿へ戻る<span class="tag">4人</span></p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="day" id="day3" data-i="2">
+    <div class="day-head">
+      <span class="day-date">12<span class="slash">/</span>31<span class="dow">THU</span></span>
+      <div class="day-meta">
+        <h2>うだつの町並み・帰路</h2>
+        <p>脇町の古い町並みを歩いたら、瀬戸大橋を渡って東広島へ。</p>
+      </div>
+    </div>
+
+    <ol class="timeline">
+      <li class="stop key">
+        <div class="stop-time">9:00</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">宿 出発</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">9:30</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">うだつの町並み(脇町)</p>
+          <p class="stop-note">江戸中期〜昭和初期の伝統的建造物が並ぶ旧街道筋。藍の館などにも立ち寄れる</p>
+          <p class="stop-caveat">※宿から車で約20〜30分</p>
+        </div>
+      </li>
+      <li class="stop">
+        <div class="stop-time">12:00</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">昼食</p>
+        </div>
+      </li>
+      <li class="stop key">
+        <div class="stop-time">13:00</div>
+        <div class="stop-dot"></div>
+        <div class="stop-body">
+          <p class="stop-title">東広島へ出発<span class="tag">克行</span><span class="tag">恵子</span><span class="tag">健司</span><span class="tag">絵美</span></p>
+          <p class="stop-caveat">※瀬戸大橋経由、車で約2時間30分の見込み</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="closing">
+      <p>年末2026 — 金刀比羅宮・徳島お遍路</p>
+      <p>気をつけて、良い旅を。</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="swipe-hint" id="swipeHint"><span>12/30 へスワイプ</span>→</div>
+
+<script>
+(function(){
+  var pages = document.getElementById('pages');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.day'));
+  var stations = Array.prototype.slice.call(document.querySelectorAll('.station'));
+  var hint = document.getElementById('swipeHint');
+  var rail = document.querySelector('.rail');
+  var trolley = document.getElementById('trolley');
+  var trolleyHop = document.getElementById('trolleyHop');
+  var root = document.documentElement;
+  var darkMQ = window.matchMedia('(prefers-color-scheme: dark)');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ticking = false;
+  var activeIndex = 0;
+
+  function isDark(){
+    var explicit = root.getAttribute('data-theme');
+    if(explicit === 'dark') return true;
+    if(explicit === 'light') return false;
+    return darkMQ.matches;
+  }
+
+  function positionTrolley(index, hop){
+    var station = stations[index];
+    if(!station) return;
+    var railRect = rail.getBoundingClientRect();
+    var btnRect = station.getBoundingClientRect();
+    var centerX = (btnRect.left + btnRect.width / 2) - railRect.left;
+    trolley.style.left = (centerX - trolley.offsetWidth / 2) + 'px';
+    if(hop && !reduceMotion){
+      trolleyHop.classList.remove('hop');
+      void trolleyHop.offsetWidth;
+      trolleyHop.classList.add('hop');
+    }
+  }
+
+  function setActive(index){
+    var changed = index !== activeIndex;
+    activeIndex = index;
+    stations.forEach(function(s, i){ s.classList.toggle('active', i === index); });
+    var s = stations[index];
+    if(s){ root.style.setProperty('--rail-accent', isDark() ? s.getAttribute('data-accent-d') : s.getAttribute('data-accent-l')); }
+    if(changed){ positionTrolley(index, true); }
+  }
+
+  function onScroll(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var max = pages.scrollWidth - pages.clientWidth;
+      var frac = max > 0 ? pages.scrollLeft / max : 0;
+      root.style.setProperty('--progress', frac);
+      setActive(Math.round(frac * (sections.length - 1)));
+      ticking = false;
+    });
+  }
+
+  pages.addEventListener('scroll', onScroll, { passive: true });
+
+  stations.forEach(function(s){
+    s.addEventListener('click', function(){
+      var target = document.getElementById(s.getAttribute('data-target'));
+      if(target){ target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', inline: 'start', block: 'nearest' }); }
+    });
+  });
+
+  var hintDismissed = false;
+  function dismissHint(){
+    if(hintDismissed) return;
+    hintDismissed = true;
+    hint.classList.add('hidden');
+    setTimeout(function(){ hint.remove(); }, 500);
+  }
+  pages.addEventListener('scroll', function(){ if(pages.scrollLeft > 8) dismissHint(); }, { passive: true });
+  setTimeout(dismissHint, 6000);
+
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){ positionTrolley(activeIndex, false); }, 150);
+  });
+
+  root.style.setProperty('--progress', 0);
+  root.style.setProperty('--rail-accent', stations[0] ? (isDark() ? stations[0].getAttribute('data-accent-d') : stations[0].getAttribute('data-accent-l')) : '#d9711f');
+  stations[0] && stations[0].classList.add('active');
+  window.addEventListener('load', function(){ positionTrolley(0, false); });
+  positionTrolley(0, false);
+
+  var checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+  checkboxes.forEach(function(box, i){
+    var key = 'shiori-tokushima2026-check-' + i;
+    try{
+      if(localStorage.getItem(key) === '1'){ box.checked = true; }
+      box.addEventListener('change', function(){ localStorage.setItem(key, box.checked ? '1' : '0'); });
+    }catch(e){}
+  });
+})();
+</script>
